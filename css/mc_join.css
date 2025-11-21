@@ -1,0 +1,23 @@
+/*
+Auuugh
+*/
+form {
+	background-color: #eb9c4d;
+	border: 2px solid black;
+	border-radius: 15px;
+	padding: 20px;
+	width: 300px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	align-items: center;
+	justify-content: center;
+}
+
+.form {
+	display: grid;
+	place-items: center;
+}
+
+.bedrock {
+	padding: 0px;
+	text-align: center;
+}
