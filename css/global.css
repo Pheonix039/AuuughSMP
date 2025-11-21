@@ -1,0 +1,119 @@
+/*
+Joshua Aguilar
+Final Project Part 2
+Date: 11/17/25
+*/
+
+@font-face {
+    font-family: "Minecraftia";
+    src: url(./Minecraftia.woff2) format("woff2"),
+		 url(./Minecraftia.ttf) format("truetype");
+}
+
+body {
+	background-image: url("../images/bg_normal.png");
+	background-size: 10%;
+	animation: scrollBackground 20s linear infinite;
+}
+
+body, html {
+	font-family: "Minecraftia", sans-serif;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+  overflow: hidden;
+}
+
+@keyframes scrollBackground {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 100% 0;
+    }
+}
+
+.ToC ul li img {
+	display: flex;
+	width: 95%;
+	height: auto;
+	object-fit: contain;
+	padding: 5px;
+}
+
+nav .ToC img:hover {
+    filter: brightness(1.5);
+}
+
+nav ul {
+	list-style-type: none;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	padding: 0;
+}
+
+.logo {
+	text-align: center;
+	padding-top: 20px;
+}
+
+.text h1 {
+	text-align: center;
+}
+
+.text p {
+	padding: 20px;
+}
+
+.contentTable figcaption {
+	text-align: center;
+}
+
+.contentTable iframe {
+	display: block;
+	margin: 0 auto;
+	padding: 5px;
+}
+
+.mapTop {
+	text-align: center;
+}
+
+.mapTop img {
+	display: block;
+	margin: 0 auto;
+	width: auto;
+	height: auto;
+}
+
+.contentTable {
+	background-color: #d6be96;
+    border-left: 8px solid #99876c;
+    border-right: 8px solid #99876c;
+    margin-top: 0;
+    width: 100%;
+    max-width: 943px;
+    margin: 0 auto;
+    table-layout: fixed;
+}
+
+.backtohome {
+	width: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.backtohome img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}

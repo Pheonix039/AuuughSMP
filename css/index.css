@@ -1,0 +1,49 @@
+/*
+Joshua Aguilar
+Final Project Part 2
+Date: 11/17/25
+*/
+
+.mapTop {
+	text-align: center;
+}
+
+.mapTop img {
+	display: block;
+	margin: 0 auto;
+	width: auto;
+	height: auto;
+}
+
+.contentTable {
+	background-color: #d6be96;
+    border-left: 8px solid #99876c;
+    border-right: 8px solid #99876c;
+    margin-top: 0;
+    width: 100%;
+    max-width: 943px;
+    margin: 0 auto;
+    table-layout: fixed;
+}
+
+.contentTable img {
+	width: 100%;
+}
+
+.text h1 {
+	text-align: center;
+}
+
+.text p {
+	padding: 20px;
+}
+
+.contentTable figcaption {
+	text-align: center;
+}
+
+.contentTable iframe {
+	display: block;
+	margin: 0 auto;
+	padding: 5px;
+}
