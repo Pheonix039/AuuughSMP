@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const VIDEO_PATH = "../AuuughSMP/Taunt.mp4"; 
     const TAUNT_VOLUME = 0.1;
     const TARGET_COLOR = { r: 0, g: 133, b: 66 };
-    const TOLERANCE = 100; 
+    const TOLERANCE = 80; 
 
     const tauntBtn = document.querySelector(".pheoTauntBtn");
     if (!tauntBtn) return;
