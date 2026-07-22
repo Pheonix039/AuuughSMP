@@ -3,11 +3,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const VIDEO_PATH = "../AuuughSMP/Taunt.mp4"; 
 
     // 2. SET VOLUME HERE (0.0 = muted, 0.5 = 50% volume, 1.0 = full volume)
-    const TAUNT_VOLUME = 0.01;
+    const TAUNT_VOLUME = 0.1;
 
     // 3. TARGET CHROMA KEY COLOR (#2596be in RGB: R:37, G:150, B:190)
     const TARGET_COLOR = { r: 37, g: 150, b: 190 };
-    const TOLERANCE = 100; // Total color difference threshold (adjust if needed)
+    
+    // Increased tolerance to catch compressed video artifacts (range: 150 - 220 works best)
+    const TOLERANCE = 180; 
 
     // Target your button
     const tauntBtn = document.querySelector(".pheoTauntBtn");
@@ -45,8 +47,8 @@ document.addEventListener("DOMContentLoaded", () => {
         video.volume = TAUNT_VOLUME;
         video.playsInline = true;
         
-        // Note: Leave crossOrigin commented out if running from local files (file://)
-        // video.crossOrigin = "anonymous"; 
+        // ENABLED for web hosting / GitHub Pages
+        video.crossOrigin = "anonymous"; 
 
         // Create Canvas element to render keyframed video
         const canvas = document.createElement("canvas");
@@ -90,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const data = frame.data;
             const length = data.length;
 
-            // Optimized color distance check (Manhattan Distance for high performance)
+            // Optimized color distance check
             for (let i = 0; i < length; i += 4) {
                 const rDiff = Math.abs(data[i] - TARGET_COLOR.r);
                 const gDiff = Math.abs(data[i + 1] - TARGET_COLOR.g);
