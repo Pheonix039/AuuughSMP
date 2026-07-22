@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const VIDEO_PATH = "../AuuughSMP/Taunt.mp4"; 
 
     // 2. SET VOLUME HERE (0.0 = muted, 0.5 = 50% volume, 1.0 = full volume)
-    const TAUNT_VOLUME = 0.01;
+    const TAUNT_VOLUME = 0.00;
 
     // 3. TARGET CHROMA KEY COLOR (#2596be in RGB: R:37, G:150, B:190)
     const TARGET_COLOR = { r: 37, g: 150, b: 190 };
