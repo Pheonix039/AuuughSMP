@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 3. TARGET CHROMA KEY COLOR (#2596be in RGB: R:37, G:150, B:190)
     const TARGET_COLOR = { r: 37, g: 150, b: 190 };
-    const TOLERANCE = 70; // Sensitivity for matching color variations (adjust if needed)
+    const TOLERANCE = 80; // Sensitivity for matching color variations (adjust if needed)
 
     // Target your button
     const tauntBtn = document.querySelector(".pheoTauntBtn");
