@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     const VIDEO_PATH = "../AuuughSMP/Taunt.mp4"; 
-    const TAUNT_VOLUME = 0.1;
+    const TAUNT_VOLUME = 0.25;
     const TARGET_COLOR = { r: 0, g: 133, b: 66 };
     const TOLERANCE = 60; 
 
