@@ -1,0 +1,47 @@
+/*
+Auuugh
+*/
+
+@font-face {
+    font-family: "Minecraftia";
+    src: url(../AuuughSMP/css/Minecraftia.woff2) format("woff2"),
+		 url(../AuuughSMP/css/Minecraftia.ttf) format("truetype");
+}
+
+body {
+	background-image: url("../Main/YippeeSMP BG.png");
+	background-size: 10%;
+	animation: scrollBackground 30s linear infinite;
+}
+
+@keyframes scrollBackground {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 100% 100%;
+    }
+}
+
+body, html {
+	font-family: "Minecraftia", sans-serif;
+	font-size: 24px;
+}
+
+.YippeeLogo {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 10px
+}
+
+.home-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 9999;
+}
+
+.home-btn:hover {
+    filter: invert(100%);
+}
