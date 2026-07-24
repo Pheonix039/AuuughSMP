@@ -1,0 +1,47 @@
+/*
+Auuugh
+*/
+
+@font-face {
+    font-family: "Minecraftia";
+    src: url(../AuuughSMP/css/Minecraftia.woff2) format("woff2"),
+		 url(../AuuughSMP/css/Minecraftia.ttf) format("truetype");
+}
+
+body {
+	background-image: url("../Main/Cindoria BG.png");
+	animation: scrollBackground 2s linear infinite;
+}
+
+@keyframes scrollBackground {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 256px 256px;
+    }
+}
+
+body, html {
+	font-family: "Minecraftia", sans-serif;
+	font-size: 24px;
+}
+
+.home-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 9999;
+}
+
+.home-btn:hover {
+    filter: invert(100%);
+}
+
+.logo img {
+	padding: 25px;
+	display: block;
+	margin: auto;
+	width: 50%;
+	align-items: center;
+}
