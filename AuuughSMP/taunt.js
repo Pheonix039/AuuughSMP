@@ -1,15 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // 1. UPDATE THIS PATH to your MP4 location!
     const VIDEO_PATH = "../AuuughSMP/Taunt.mp4"; 
+    const TAUNT_VOLUME = 0.25;
+    const TARGET_COLOR = { r: 0, g: 133, b: 66 };
+    const TOLERANCE = 60; 
 
-    // 2. SET VOLUME HERE (0.0 = muted, 0.5 = 50% volume, 1.0 = full volume)
-    const TAUNT_VOLUME = 0.1;
-
-    // 3. TARGET CHROMA KEY COLOR (#2596be in RGB: R:37, G:150, B:190)
-    const TARGET_COLOR = { r: 37, g: 150, b: 190 };
-    const TOLERANCE = 70; // Sensitivity for matching color variations (adjust if needed)
-
-    // Target your button
     const tauntBtn = document.querySelector(".pheoTauntBtn");
     if (!tauntBtn) return;
 
@@ -19,10 +13,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     function playTauntAnimation() {
-        // Prevent stacking overlays if clicked multiple times fast
         if (document.getElementById("taunt-overlay")) return;
 
-        // Create the Overlay container
         const overlay = document.createElement("div");
         overlay.id = "taunt-overlay";
         Object.assign(overlay.style, {
@@ -39,14 +31,13 @@ document.addEventListener("DOMContentLoaded", () => {
             overflow: "hidden"
         });
 
-        // Create offscreen Video element
         const video = document.createElement("video");
         video.src = VIDEO_PATH;
         video.volume = TAUNT_VOLUME;
         video.playsInline = true;
-        video.crossOrigin = "anonymous"; // Prevents canvas security errors if hosted on CDN
+        
+        video.crossOrigin = "anonymous"; 
 
-        // Create Canvas element to render keyframed video
         const canvas = document.createElement("canvas");
         const ctx = canvas.getContext("2d", { willReadFrequently: true });
 
@@ -61,50 +52,43 @@ document.addEventListener("DOMContentLoaded", () => {
 
         let animationFrameId;
 
-        // Chroma key rendering loop
         function processFrame() {
             if (video.paused || video.ended) return;
 
-            // Match canvas rendering resolution to video native resolution
-            if (canvas.width !== video.videoWidth || canvas.height !== video.videoHeight) {
-                canvas.width = video.videoWidth;
-                canvas.height = video.videoHeight;
+            const width = video.videoWidth;
+            const height = video.videoHeight;
+
+            if (width === 0 || height === 0) {
+                animationFrameId = requestAnimationFrame(processFrame);
+                return;
             }
 
-            // Draw current video frame to canvas
-            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+            if (canvas.width !== width || canvas.height !== height) {
+                canvas.width = width;
+                canvas.height = height;
+            }
 
-            // Extract pixel data
-            const frame = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(video, 0, 0, width, height);
+
+            const frame = ctx.getImageData(0, 0, width, height);
             const data = frame.data;
             const length = data.length;
 
-            // Loop through pixels and apply alpha mask to target color
             for (let i = 0; i < length; i += 4) {
-                const r = data[i];
-                const g = data[i + 1];
-                const b = data[i + 2];
+                const rDiff = Math.abs(data[i] - TARGET_COLOR.r);
+                const gDiff = Math.abs(data[i + 1] - TARGET_COLOR.g);
+                const bDiff = Math.abs(data[i + 2] - TARGET_COLOR.b);
 
-                // Calculate distance from target color
-                const colorDistance = Math.sqrt(
-                    Math.pow(r - TARGET_COLOR.r, 2) +
-                    Math.pow(g - TARGET_COLOR.g, 2) +
-                    Math.pow(b - TARGET_COLOR.b, 2)
-                );
-
-                if (colorDistance < TOLERANCE) {
-                    data[i + 3] = 0; // Set Alpha to fully transparent
+                if (rDiff + gDiff + bDiff < TOLERANCE) {
+                    data[i + 3] = 0;
                 }
             }
 
-            // Write processed frame back to canvas
             ctx.putImageData(frame, 0, 0);
 
-            // Loop on next frame request
             animationFrameId = requestAnimationFrame(processFrame);
         }
 
-        // Event listeners for lifecycle control
         video.addEventListener("play", () => {
             processFrame();
         });
@@ -113,11 +97,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         video.addEventListener("error", () => {
             console.error("Could not load video file at:", VIDEO_PATH);
-            alert("Video file couldn't be loaded! Check your VIDEO_PATH in taunt.js");
+            alert("video broken :(");
             cleanup();
         });
 
-        // Start playback
         video.play().catch(err => {
             console.error("Video failed to play:", err);
             cleanup();
