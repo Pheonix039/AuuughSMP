@@ -10,6 +10,12 @@
 	<title>Yippee SMP</title>
 	<link rel="icon" type="image/x-icon" href="../Cindoria/icon.png">
     <link rel="stylesheet" href="./CindoriaStyle.css">
+	<script>
+	  if (window.location.href.endsWith(".html")) {
+		const cleanUrl = window.location.href.replace(".html", "");
+		window.history.replaceState(null, null, cleanUrl);
+	  }
+	</script>
   </head>
   <body>
 		<a href="../index.html" class="home-btn" aria-label="Back to Home">

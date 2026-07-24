@@ -10,6 +10,12 @@
 	<title>Auuugh.net</title>
 	<link rel="icon" type="image/x-icon" href="./Main/icon.png">
     <link rel="stylesheet" href="./Main/style.css">
+	<script>
+	  if (window.location.href.endsWith(".html")) {
+		const cleanUrl = window.location.href.replace(".html", "");
+		window.history.replaceState(null, null, cleanUrl);
+	  }
+	</script>
   </head>
   <body>
 
